@@ -1,183 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gombo News | Uganda News Today</title>
-  <meta name="description" content="Gombo News brings you the latest news from Uganda and around the world.">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
-      line-height: 1.5;
-    }
+<title>Gombo News | Uganda News Today</title>
 
-    header {
-      background: #111;
-      color: white;
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+<meta name="description" content="Gombo News brings you the latest news from Uganda, Africa and around the world.">
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    .logo span {
-      color: #f4b400;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 14px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
 
-    .breaking {
-      background: #d71920;
-      color: white;
-      padding: 10px 5%;
-      font-weight: bold;
-    }
+header {
+  background: #111;
+  color: white;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 25px auto;
-    }
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
 
-    .hero {
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-    }
+.logo span {
+  color: #f4b400;
+}
 
-    .hero h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 14px;
+}
 
-    .hero p {
-      color: #666;
-    }
+.breaking {
+  background: #d71920;
+  color: white;
+  padding: 10px 5%;
+  font-weight: bold;
+}
 
-    .ad {
-      background: #e8e8e8;
-      min-height: 90px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #777;
-      margin: 20px 0;
-      border-radius: 6px;
-    }
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 25px auto;
+}
 
-    .section-title {
-      font-size: 24px;
-      margin: 25px 0 15px;
-      border-left: 5px solid #d71920;
-      padding-left: 10px;
-    }
+.ad {
+  background: #e8e8e8;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  margin: 20px 0;
+  border-radius: 6px;
+}
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+.section-title {
+  font-size: 24px;
+  margin: 25px 0 15px;
+  border-left: 5px solid #d71920;
+  padding-left: 10px;
+}
 
-    .card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
 
-    .card-image {
-      height: 150px;
-      background: #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #777;
-    }
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
 
-    .card-content {
-      padding: 15px;
-    }
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    .category {
-      color: #d71920;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+.card-content {
+  padding: 15px;
+}
 
-    .card h3 {
-      margin: 7px 0;
-      font-size: 18px;
-    }
+.category {
+  color: #d71920;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
-    .card p {
-      color: #666;
-      font-size: 14px;
-    }
+.card h3 {
+  margin: 7px 0;
+  font-size: 19px;
+}
 
-    .date {
-      margin-top: 10px;
-      color: #999;
-      font-size: 12px;
-    }
+.card p {
+  color: #666;
+  font-size: 14px;
+}
 
-    footer {
-      background: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 30px 15px;
-      margin-top: 40px;
-    }
+.date {
+  margin-top: 10px;
+  color: #999;
+  font-size: 12px;
+}
 
-    footer h2 {
-      color: white;
-      margin-bottom: 10px;
-    }
+.empty {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 8px;
+}
 
-    @media (max-width: 700px) {
-      header {
-        display: block;
-      }
+footer {
+  background: #111;
+  color: #bbb;
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: 40px;
+}
 
-      nav {
-        margin-top: 12px;
-      }
+footer h2 {
+  color: white;
+  margin-bottom: 10px;
+}
 
-      nav a {
-        margin-right: 12px;
-        margin-left: 0;
-      }
+@media (max-width: 700px) {
+  header {
+    display: block;
+  }
 
-      .hero h1 {
-        font-size: 25px;
-      }
+  nav {
+    margin-top: 12px;
+  }
 
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  nav a {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">Gombo<span>News</span></div>
+
+  <div class="logo">
+    Gombo<span>News</span>
+  </div>
 
   <nav>
     <a href="#">Home</a>
@@ -186,10 +181,11 @@
     <a href="#">Sports</a>
     <a href="#">Entertainment</a>
   </nav>
+
 </header>
 
 <div class="breaking">
-  BREAKING NEWS: Welcome to Gombo News
+  BREAKING NEWS • Gombo News
 </div>
 
 <div class="container">
@@ -198,78 +194,14 @@
     Advertisement
   </div>
 
-  <section class="hero">
-    <h1>Gombo News</h1>
-    <p>
-      Your source for the latest news, stories and updates from Uganda,
-      Africa and around the world.
-    </p>
-  </section>
+  <h2 class="section-title">
+    Latest News
+  </h2>
 
-  <h2 class="section-title">Latest News</h2>
-
-  <div class="news-grid">
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">Uganda</div>
-        <h3>Latest News From Uganda</h3>
-        <p>Stay updated with the latest developments and stories from across Uganda.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">Business</div>
-        <h3>Business News and Updates</h3>
-        <p>Discover important business and economic developments affecting Uganda.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">Sports</div>
-        <h3>Latest Sports News</h3>
-        <p>Follow the latest sports stories, results and updates.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">Entertainment</div>
-        <h3>Entertainment Updates</h3>
-        <p>Get the latest entertainment stories from Uganda and beyond.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">Africa</div>
-        <h3>Africa News</h3>
-        <p>Important stories and developments from across the African continent.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="card-image">News Image</div>
-      <div class="card-content">
-        <div class="category">World</div>
-        <h3>World News</h3>
-        <p>Follow major stories and developments from around the world.</p>
-        <div class="date">Today</div>
-      </div>
-    </article>
-
+  <div id="news" class="news-grid">
+    <div class="empty">
+      Loading latest news...
+    </div>
   </div>
 
   <div class="ad">
@@ -279,10 +211,117 @@
 </div>
 
 <footer>
+
   <h2>Gombo News</h2>
-  <p>Uganda News • Africa • Business • Sports • Entertainment</p>
-  <p>© 2026 Gombo News. All rights reserved.</p>
+
+  <p>
+    Uganda News • Africa • Business • Sports • Entertainment
+  </p>
+
+  <p>
+    © 2026 Gombo News. All rights reserved.
+  </p>
+
 </footer>
+
+<script>
+
+// SUPABASE CONNECTION
+
+const SUPABASE_URL =
+"https://ljdyhkffarslfgrqawrn.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_oCFEhHMC7ETCXNwJKIFzwg_qOdA9f0i";
+
+const supabaseClient =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+// LOAD PUBLISHED STORIES
+
+async function loadNews() {
+
+  const newsContainer =
+    document.getElementById("news");
+
+  const { data, error } =
+    await supabaseClient
+      .from("articles")
+      .select("*")
+      .eq("published", true)
+      .order("created_at", {
+        ascending: false
+      });
+
+  if (error) {
+
+    console.error(error);
+
+    newsContainer.innerHTML =
+      "<div class='empty'>Unable to load news.</div>";
+
+    return;
+  }
+
+  if (!data || data.length === 0) {
+
+    newsContainer.innerHTML =
+      "<div class='empty'>No news stories published yet.</div>";
+
+    return;
+  }
+
+  newsContainer.innerHTML = "";
+
+  data.forEach(article => {
+
+    const card =
+      document.createElement("article");
+
+    card.className = "card";
+
+    const image =
+      article.image_url
+      ? `<img src="${article.image_url}" alt="${article.title}">`
+      : "";
+
+    card.innerHTML = `
+
+      ${image}
+
+      <div class="card-content">
+
+        <div class="category">
+          ${article.category}
+        </div>
+
+        <h3>
+          ${article.title}
+        </h3>
+
+        <p>
+          ${article.content.substring(0, 150)}...
+        </p>
+
+        <div class="date">
+          ${new Date(article.created_at).toLocaleString()}
+        </div>
+
+      </div>
+    `;
+
+    newsContainer.appendChild(card);
+
+  });
+}
+
+loadNews();
+
+</script>
 
 </body>
 </html>
