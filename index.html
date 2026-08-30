@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gombo News | Uganda News Today</title>
+  <meta name="description" content="Gombo News brings you the latest news from Uganda and around the world.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #f4b400;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    .breaking {
+      background: #d71920;
+      color: white;
+      padding: 10px 5%;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 25px auto;
+    }
+
+    .hero {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #666;
+    }
+
+    .ad {
+      background: #e8e8e8;
+      min-height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin: 25px 0 15px;
+      border-left: 5px solid #d71920;
+      padding-left: 10px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card-image {
+      height: 150px;
+      background: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .category {
+      color: #d71920;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 7px 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .date {
+      margin-top: 10px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    footer {
+      background: #111;
+      color: #bbb;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 40px;
+    }
+
+    footer h2 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        display: block;
+      }
+
+      nav {
+        margin-top: 12px;
+      }
+
+      nav a {
+        margin-right: 12px;
+        margin-left: 0;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Gombo<span>News</span></div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Uganda</a>
+    <a href="#">Business</a>
+    <a href="#">Sports</a>
+    <a href="#">Entertainment</a>
+  </nav>
+</header>
+
+<div class="breaking">
+  BREAKING NEWS: Welcome to Gombo News
+</div>
+
+<div class="container">
+
+  <div class="ad">
+    Advertisement
+  </div>
+
+  <section class="hero">
+    <h1>Gombo News</h1>
+    <p>
+      Your source for the latest news, stories and updates from Uganda,
+      Africa and around the world.
+    </p>
+  </section>
+
+  <h2 class="section-title">Latest News</h2>
+
+  <div class="news-grid">
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">Uganda</div>
+        <h3>Latest News From Uganda</h3>
+        <p>Stay updated with the latest developments and stories from across Uganda.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">Business</div>
+        <h3>Business News and Updates</h3>
+        <p>Discover important business and economic developments affecting Uganda.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">Sports</div>
+        <h3>Latest Sports News</h3>
+        <p>Follow the latest sports stories, results and updates.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">Entertainment</div>
+        <h3>Entertainment Updates</h3>
+        <p>Get the latest entertainment stories from Uganda and beyond.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">Africa</div>
+        <h3>Africa News</h3>
+        <p>Important stories and developments from across the African continent.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-image">News Image</div>
+      <div class="card-content">
+        <div class="category">World</div>
+        <h3>World News</h3>
+        <p>Follow major stories and developments from around the world.</p>
+        <div class="date">Today</div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="ad">
+    Advertisement
+  </div>
+
+</div>
+
+<footer>
+  <h2>Gombo News</h2>
+  <p>Uganda News • Africa • Business • Sports • Entertainment</p>
+  <p>© 2026 Gombo News. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
