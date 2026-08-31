@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gombo News | Uganda News</title>
-
-<meta name="description"
-content="Latest Uganda and Africa news from Gombo News.">
+<title>Gombo News</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
   color: #222;
@@ -29,60 +19,60 @@ body {
 header {
   background: #111;
   color: white;
-  padding: 18px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: bold;
+header h1 {
+  margin: 0;
+  font-size: 30px;
 }
 
-.logo span {
+header span {
   color: #f4b400;
+}
+
+nav {
+  margin-top: 12px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 15px;
+  margin: 0 8px;
   font-size: 14px;
 }
 
 .breaking {
   background: #d71920;
   color: white;
-  padding: 10px 5%;
+  padding: 10px;
   font-weight: bold;
+  text-align: center;
 }
 
 .container {
-  width: 90%;
+  width: 92%;
   max-width: 1100px;
-  margin: 25px auto;
+  margin: 20px auto;
 }
 
 .ad {
-  background: #e8e8e8;
+  background: #ddd;
   min-height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #777;
   margin: 20px 0;
-  border-radius: 6px;
 }
 
-.section-title {
-  font-size: 24px;
-  margin: 25px 0 15px;
+h2 {
   border-left: 5px solid #d71920;
   padding-left: 10px;
 }
 
-.news-grid {
+#news {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
@@ -92,7 +82,7 @@ nav a {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  box-shadow: 0 2px 8px #ccc;
 }
 
 .card img {
@@ -109,86 +99,61 @@ nav a {
   color: #d71920;
   font-size: 12px;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 .card h3 {
+  font-size: 20px;
   margin: 8px 0;
-  font-size: 19px;
-  line-height: 1.3;
 }
 
 .card p {
-  color: #666;
-  font-size: 14px;
+  color: #555;
   line-height: 1.5;
-}
-
-.date {
-  margin-top: 10px;
-  color: #999;
-  font-size: 12px;
 }
 
 .read {
   display: inline-block;
-  margin-top: 12px;
+  margin-top: 10px;
   color: #d71920;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .empty {
   background: white;
-  padding: 30px;
+  padding: 25px;
   text-align: center;
   border-radius: 8px;
 }
 
-footer {
-  background: #111;
-  color: #bbb;
-  text-align: center;
-  padding: 30px 15px;
-  margin-top: 40px;
+.error {
+  background: #ffe0e0;
+  color: #a00000;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-footer h2 {
+footer {
+  margin-top: 40px;
+  background: #111;
   color: white;
-  margin-bottom: 10px;
+  padding: 30px;
+  text-align: center;
 }
 
 @media(max-width:700px) {
-
-  header {
-    display: block;
-  }
-
-  nav {
-    margin-top: 12px;
-  }
-
-  nav a {
-    margin: 0 10px 0 0;
-  }
-
-  .news-grid {
+  #news {
     grid-template-columns: 1fr;
   }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<div class="logo">
-Gombo<span>News</span>
-</div>
+<h1>Gombo<span>News</span></h1>
 
 <nav>
 <a href="index.html">Home</a>
@@ -200,11 +165,9 @@ Gombo<span>News</span>
 
 </header>
 
-
 <div class="breaking">
-BREAKING NEWS • Gombo News
+BREAKING NEWS • GOMBO NEWS
 </div>
-
 
 <div class="container">
 
@@ -212,20 +175,11 @@ BREAKING NEWS • Gombo News
 Advertisement
 </div>
 
+<h2>Latest News</h2>
 
-<h2 class="section-title">
-Latest News
-</h2>
-
-
-<div id="news" class="news-grid">
-
-<div class="empty">
-Loading latest news...
+<div id="news">
+<div class="empty">Loading news...</div>
 </div>
-
-</div>
-
 
 <div class="ad">
 Advertisement
@@ -233,138 +187,121 @@ Advertisement
 
 </div>
 
-
 <footer>
-
 <h2>Gombo News</h2>
-
-<p>
-Uganda News • Africa • Business • Sports • Entertainment
-</p>
-
-<p>
-© 2026 Gombo News
-</p>
-
+<p>Uganda • Africa • Business • Sports • Entertainment</p>
+<p>© 2026 Gombo News</p>
 </footer>
 
 
 <script>
 
-// SUPABASE
+const SUPABASE_URL ="https://ljdyhkffarslfgrqawrn.supabase.co";
 
-const SUPABASE_URL =
-"https://ljdyhkffarslfgrqawrn.supabase.co";
+const SUPABASE_KEY = "sb_publishable_oCFEhHMC7ETCXNwJKIFzwg_qOdA9f0i";
 
-const SUPABASE_KEY =
-"sb_publishable_oCFEhHMC7ETCXNwJKIFzwg_qOdA9f0i";
-
-
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 
-// LOAD NEWS
-
 async function loadNews() {
 
-const news =
-document.getElementById("news");
+  const box = document.getElementById("news");
+
+  box.innerHTML =
+    '<div class="empty">Loading news...</div>';
 
 
-const { data, error } =
-await supabaseClient
-.from("articles")
-.select("*")
-.eq("published", true)
-.order("created_at", {
-ascending: false
-});
+  const result = await db
+    .from("articles")
+    .select("*")
+    .eq("published", true)
+    .order("created_at", {
+      ascending: false
+    });
 
 
-if (error) {
+  if (result.error) {
 
-console.error(error);
+    console.error(result.error);
 
-news.innerHTML =
-"<div class='empty'>Unable to load news.</div>";
+    box.innerHTML =
+      '<div class="error">Database error: ' +
+      result.error.message +
+      '</div>';
 
-return;
-
-}
-
-
-if (!data || data.length === 0) {
-
-news.innerHTML =
-"<div class='empty'>No news stories published yet.</div>";
-
-return;
-
-}
+    return;
+  }
 
 
-news.innerHTML = "";
+  if (!result.data || result.data.length === 0) {
+
+    box.innerHTML =
+      '<div class="empty">' +
+      'No published stories found.' +
+      '</div>';
+
+    return;
+  }
 
 
-data.forEach(article => {
-
-const card =
-document.createElement("article");
-
-card.className =
-"card";
+  box.innerHTML = "";
 
 
-let image = "";
+  result.data.forEach(function(article) {
 
-if (article.image_url) {
+    const card =
+      document.createElement("div");
 
-image =
-`<img src="${article.image_url}"
-alt="${article.title}">`;
-
-}
+    card.className = "card";
 
 
-card.innerHTML = `
+    let image = "";
 
-${image}
+    if (article.image_url) {
 
-<div class="card-content">
+      image =
+        '<img src="' +
+        article.image_url +
+        '" alt="' +
+        article.title +
+        '">';
 
-<div class="category">
-${article.category || "News"}
-</div>
-
-<h3>
-${article.title}
-</h3>
-
-<p>
-${article.content.substring(0, 150)}...
-</p>
-
-<div class="date">
-${new Date(article.created_at).toLocaleString()}
-</div>
-
-<a class="read"
-href="article.html?id=${article.id}">
-Read Full Story →
-</a>
-
-</div>
-
-`;
+    }
 
 
-news.appendChild(card);
+    card.innerHTML =
 
-});
+      image +
+
+      '<div class="card-content">' +
+
+      '<div class="category">' +
+      (article.category || "NEWS") +
+      '</div>' +
+
+      '<h3>' +
+      article.title +
+      '</h3>' +
+
+      '<p>' +
+      (article.content || "").substring(0, 180) +
+      '...</p>' +
+
+      '<a class="read" href="article.html?id=' +
+      article.id +
+      '">' +
+      'Read Full Story →' +
+      '</a>' +
+
+      '</div>';
+
+
+    box.appendChild(card);
+
+  });
 
 }
 
@@ -374,5 +311,4 @@ loadNews();
 </script>
 
 </body>
-
 </html>
